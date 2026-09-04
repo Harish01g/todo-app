@@ -11,16 +11,16 @@ export default function Home() {
   const router = useRouter()
 
   useEffect(() => {
-  async function checkUser() {
-    const { data } = await supabase.auth.getUser()
+    async function checkUser() {
+      const { data } = await supabase.auth.getUser()
 
-    if (data.user) {
-      router.push("/todos")
+      if (data.user) {
+        router.push("/todos")
+      }
     }
-  }
 
-  checkUser()
-}, [router])
+    checkUser()
+  }, [router])
 
   async function signUp() {
     const { error } = await supabase.auth.signUp({
@@ -29,10 +29,10 @@ export default function Home() {
     })
 
     if (error) {
-  setMessage(error.message)
-} else {
-  setMessage("Signup successful! Check your email.")
-}
+      setMessage(error.message)
+    } else {
+      setMessage("Signup successful! Check your email.")
+    }
   }
 
   async function login() {
@@ -42,52 +42,53 @@ export default function Home() {
     })
 
     if (error) {
-  setMessage(error.message)
-} else {
-  router.push("/todos")
-}
+      setMessage(error.message)
+    } else {
+      router.push("/todos")
+    }
   }
 
   return (
-    <main className="min-h-screen bg-gray-100 flex items-center justify-center p-8">
+    <main className="min-h-screen bg-gray-100 dark:bg-gray-950 flex items-center justify-center p-6">
 
-      <div className="w-full max-w-md bg-white p-8 rounded-2xl shadow-lg">
+      <div className="w-full max-w-md bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-lg">
+
         {message && (
- <p className="text-center text-sm text-gray-600 mb-4">
-  {message}
-</p>
-)}
+          <p className="text-center text-sm text-gray-600 dark:text-gray-300 mb-4">
+            {message}
+          </p>
+        )}
 
-        <h1 className="text-4xl font-bold text-center mb-2">
-                  Todo App
+        <h1 className="text-4xl font-bold text-center mb-2 text-gray-900 dark:text-white">
+          Todo App
         </h1>
 
-        <p className="text-center text-gray-500 mb-8">
-                   Organize your day, one task at a time.
+        <p className="text-center text-gray-500 dark:text-gray-300 mb-8">
+          Organize your day, one task at a time.
         </p>
 
-        <label className="block text-sm font-medium mb-1">
-      Email
-</label>
+        <label className="block text-sm font-medium mb-1 text-gray-800 dark:text-gray-200">
+          Email
+        </label>
 
-<input
-  className="w-full p-3 border rounded-lg mb-4"
-  placeholder="Enter your email"
-  value={email}
-  onChange={(e) => setEmail(e.target.value)}
-/>
+        <input
+          className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg mb-4 bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-400"
+          placeholder="Enter your email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
 
-        <label className="block text-sm font-medium mb-1">
-  Password
-</label>
+        <label className="block text-sm font-medium mb-1 text-gray-800 dark:text-gray-200">
+          Password
+        </label>
 
-<input
-  className="w-full p-3 border rounded-lg mb-6"
-  type="password"
-  placeholder="Enter your password"
-  value={password}
-  onChange={(e) => setPassword(e.target.value)}
-/>
+        <input
+          className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg mb-6 bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-400"
+          type="password"
+          placeholder="Enter your password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
 
         <div className="flex gap-3">
 

@@ -125,13 +125,13 @@ export default function Todos() {
   }, [])
 
   return (
-    <main className="min-h-screen bg-gray-100 p-8">
+    <main className="min-h-screen bg-gray-100 dark:bg-gray-950 p-8">
 
-      <h1 className="text-4xl font-bold text-center mb-2">
+      <h1 className="text-4xl font-bold text-center mb-2 text-gray-900 dark:text-white">
   My Todos 📝
 </h1>
 
-<p className="text-center text-gray-500 mb-6">
+<p className="text-center text-gray-500 dark:text-gray-300 mb-6">
   Keep track of what you need to get done.
 </p>
 
@@ -141,7 +141,7 @@ export default function Todos() {
         </p>
       )}
 
-      <div className="max-w-lg mx-auto bg-white p-8 rounded-2xl shadow-lg">
+      <div className="max-w-lg mx-auto bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-lg">
         {message && (
            <p className="text-center text-sm text-green-600 mb-4">
            {message}
@@ -149,7 +149,7 @@ export default function Todos() {
           )}
 
        <input
-  className="w-full p-3 border rounded-lg mb-3 focus:outline-none focus:ring-2 focus:ring-purple-400"
+   className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg mb-3 bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-400"
   placeholder="What needs to be done?"
   value={task}
   onChange={(e) => setTask(e.target.value)}
@@ -162,7 +162,7 @@ export default function Todos() {
           Add Todo
         </button>
 
-          <p className="text-sm text-gray-500 mb-3">
+          <p className="text-sm text-gray-500 dark:text-gray-300 mb-3">
   {remainingTodos} remaining •{" "}
   {todos.length - remainingTodos} completed
 </p>
@@ -176,7 +176,7 @@ export default function Todos() {
     {todos.map((todo) => (
       <li
         key={todo.id}
-        className="bg-gray-50 p-4 rounded-lg shadow flex items-center gap-3 hover:shadow-md transition"
+        className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg shadow flex items-center gap-3 hover:shadow-md transition"
       >
         <input
           type="checkbox"
@@ -191,7 +191,7 @@ export default function Todos() {
           className={`flex-1 ${
             todo.completed
               ? "line-through text-gray-400"
-              : "text-gray-800"
+              : "text-gray-800 dark:text-gray-100"
           }`}
         >
           {todo.task}
